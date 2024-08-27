@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Perfume Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #search {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .autocomplete-suggestions {
+            border: 1px solid #ccc;
+            background-color: white;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            width: calc(100% - 20px);
+            z-index: 1000;
+        }
+
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .autocomplete-suggestion:hover {
+            background-color: #f0f0f0;
+        }
+
+        .collection-list {
+            margin-top: 20px;
+        }
+
+        .collection-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .collection-list li {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .collection-list button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+
+        .perfume-details {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: none; /* Initially hidden */
+        }
+
+        .perfume-details h2 {
+            margin-top: 0;
+        }
+
+        /* New style for the return button */
+        #return-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Your Perfume Collection</h1>
+
+    <a id="return-button" href="index.html">Return to Recommendation System</a>
+
+    <input type="text" id="search" placeholder="Search for perfumes..." autocomplete="off" />
+    <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+
+    <div class="collection-list">
+        <h2>Your Collection</h2>
+        <ul id="collection-list"></ul>
+    </div>
+
+    <div id="perfume-details" class="perfume-details">
+    </div>
+
+    <script src="collection.js"></script>
+</body>
+</html>

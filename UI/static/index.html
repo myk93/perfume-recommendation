@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .perfume-details {
+            margin-top: 20px;
+        }
+
+        .perfume-details h2 {
+            color: #333;
+        }
+
+        .perfume-details p {
+            margin: 5px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Perfume Recommendation System</h1>
+
+        <a href="/static/collection.html">Manage Your Collection</a>
+
+        <div class="filter-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="">Any</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="family">Family</label>
+            <select id="family">
+                <option value="">Any</option>
+                <!-- Dynamically populate options here -->
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="subfamily">Subfamily</label>
+            <select id="subfamily">
+                <option value="">Any</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="price">Price Range</label>
+            <input type="range" id="price" min="1" max="3" value="2" />
+            <span id="price-value">2</span>
+        </div>
+
+        <button class="button" onclick="recommendPerfume()">Recommend Perfume</button>
+
+        <div id="perfume-details" class="perfume-details"></div>
+    </div>
+
+    <script>
+        function loadScript(scriptUrl) {
+            var script = document.createElement('script');
+            script.src = scriptUrl;
+            document.head.appendChild(script);
+        }
+
+        function fileExists(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    callback(xhr.status !== 404);
+                }
+            };
+            xhr.send();
+        }
+
+        fileExists('index.js', function (exists) {
+            if (exists) {
+                loadScript('index.js');
+            } else {
+                loadScript('static/index.js');
+            }
+        });
+    </script>
+</body>
+
+</html>
